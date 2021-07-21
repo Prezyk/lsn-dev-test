@@ -33,9 +33,9 @@ public class Task2 {
     }
 
     private static List<Integer[]> processInput(String input) throws IntegerListPrepareException {
-        PairFinder pairFinder = new PairFinderImp();
+        PairFinder pairFinder = new PairFinderImp(SUM_UP_TO);
         List<Integer> integers = prepareInput(input);
-        return pairFinder.findPairs(integers, SUM_UP_TO);
+        return pairFinder.findPairs(integers);
     }
 
     private static List<Integer> prepareInput(String input) throws IntegerListPrepareException {
