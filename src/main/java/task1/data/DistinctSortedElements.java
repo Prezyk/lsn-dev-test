@@ -1,6 +1,7 @@
 package task1.data;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DistinctSortedElements {
 
@@ -16,6 +17,19 @@ public class DistinctSortedElements {
         this.distinctElementCount = distinctElementCount;
         this.minValue = minValue;
         this.maxValue = maxValue;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DistinctSortedElements that = (DistinctSortedElements) o;
+        return elementCount == that.elementCount && distinctElementCount == that.distinctElementCount && minValue == that.minValue && maxValue == that.maxValue && Objects.equals(elements, that.elements);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(elements, elementCount, distinctElementCount, minValue, maxValue);
     }
 
     public List<Integer> getElements() {
