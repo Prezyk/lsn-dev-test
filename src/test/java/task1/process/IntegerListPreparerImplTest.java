@@ -1,6 +1,5 @@
 package task1.process;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import task1.process.exception.IntegerListPrepareException;
 

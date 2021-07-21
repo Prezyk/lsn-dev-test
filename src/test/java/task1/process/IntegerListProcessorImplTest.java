@@ -24,7 +24,7 @@ class IntegerListProcessorImplTest {
     @Test
     void testProcessIntegerListSameElementDuplicated() {
         List<Integer> input = Arrays.asList(4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4);
-        DistinctSortedElements expectedResult = new DistinctSortedElements(input, 16, 1, 4, 4);
+        DistinctSortedElements expectedResult = new DistinctSortedElements(Arrays.asList(4), 16, 1, 4, 4);
         DistinctSortedElements actualResult = integerListProcessor.processIntegerList(input);
 
         assertEquals(expectedResult, actualResult);
@@ -42,7 +42,7 @@ class IntegerListProcessorImplTest {
     @Test
     void testProcessIntegerDifferentDuplicates() {
         List<Integer> input = Arrays.asList(1, 4, 1, 2, 4, 5, 12, 14, 22, 32, 17, 21, 22, 21, 25, 27, 28, 8, 9, 13, 2);
-        DistinctSortedElements expectedResult = new DistinctSortedElements(Arrays.asList(1,2,4,5,8,9,12,13,14,17,21,22,25,27,28,32), 22, 16, 1, 32);
+        DistinctSortedElements expectedResult = new DistinctSortedElements(Arrays.asList(1, 2, 4, 5, 8, 9, 12, 13, 14, 17, 21, 22, 25, 27, 28, 32), 21, 16, 1, 32);
         DistinctSortedElements actualResult = integerListProcessor.processIntegerList(input);
 
         assertEquals(expectedResult, actualResult);
