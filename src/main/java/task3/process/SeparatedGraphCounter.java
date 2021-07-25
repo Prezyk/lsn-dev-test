@@ -1,5 +1,5 @@
 package task3.process;
 
 public interface SeparatedGraphCounter {
-    int countSeparatedGraphs(int[][] verticesConnections);
+    int countSeparatedGraphs(int[][] edgeVertices);
 }
