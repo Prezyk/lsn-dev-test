@@ -1,30 +1,24 @@
 package task3;
 
-import task1.process.IntegerListPreparer;
-import task1.process.IntegerListPreparerImpl;
-import task1.process.exception.IntegerListPrepareException;
-import task2.Task2;
-import task2.process.PairFinder;
-import task2.process.PairFinderImp;
+import task3.process.exception.ConnectionParseException;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Task3 {
 
-    private static final String WELCOME_MESSAGE = "Please type you integers in proper format, e.g. \"1 2 4 1 3 2 1\")\n";
-    private static final String INPUT_SEPARATOR = " ";
-    private static final String INVALID_INPUT_MESSAGE = "Error: Input should be integers separated by spaces. Check you input.";
-    private static final int SUM_UP_TO = 13;
+    private static final String WELCOME_MESSAGE = "Please type number of connections \"n\" and then connections in the lines below, e.g.:\n3\n1 2\n2 3\n3 4";
+    private static final String INVALID_INPUT_MESSAGE = "Error: Wrong format of the data. Check you input.";
 
     public static void main(String[] args) {
         printWelcomeMessage();
         Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
+        int numberOfLines = scanner.nextInt();
+        String[] connectionsRows = collectInput(numberOfLines);
         try {
-            List<Integer[]> processResult = processInput(userInput);
-            printFormattedResult(processResult);
-        } catch (IntegerListPrepareException exception) {
+            int[][] connections = parseConnections(connectionsRows);
+            int numberOfSeparatedGraphs = countSeparatedGraphs(connections);
+            System.out.println(numberOfSeparatedGraphs);
+        } catch (ConnectionParseException exception) {
             printError();
         }
     }
@@ -33,23 +27,16 @@ public class Task3 {
         System.out.println(WELCOME_MESSAGE);
     }
 
-    private static List<Integer[]> processInput(String input) throws IntegerListPrepareException {
-        PairFinder pairFinder = new PairFinderImp(SUM_UP_TO);
-        List<Integer> integers = prepareInput(input);
-        return pairFinder.findPairs(integers);
+    private static String[] collectInput(int numberOfLines) {
+        return null;
     }
 
-    private static List<Integer> prepareInput(String input) throws IntegerListPrepareException {
-        IntegerListPreparer preparer = new IntegerListPreparerImpl();
-        return preparer.prepareIntegersList(input, INPUT_SEPARATOR);
+    private static int[][] parseConnections(String[] connectionsRows) throws ConnectionParseException {
+        return null;
     }
 
-    private static void printFormattedResult(List<Integer[]> integerPairs) {
-        integerPairs.forEach(Task2::printPair);
-    }
-
-    private static void printPair(Integer[] integerPair) {
-        System.out.println(integerPair[0] + " " + integerPair[1] + "\n");
+    private static int countSeparatedGraphs(int[][] connections) {
+        return -1;
     }
 
     private static void printError() {
