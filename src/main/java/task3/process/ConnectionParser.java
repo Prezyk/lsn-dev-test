@@ -1,9 +1,9 @@
 package task3.process;
 
-import task3.process.exception.ConnectionPrepareException;
+import task3.process.exception.ConnectionParseException;
 
 public interface ConnectionParser {
 
-    int[][] parseConnections(String[] connectionsRows) throws ConnectionPrepareException;
+    int[][] parseConnections(String[] connectionsRows) throws ConnectionParseException;
 
 }

@@ -1,10 +1,10 @@
 package task3.process;
 
-import task3.process.exception.ConnectionPrepareException;
+import task3.process.exception.ConnectionParseException;
 
 public class ConnectionParserImpl implements ConnectionParser {
     @Override
-    public int[][] parseConnections(String[] connectionsRows) throws ConnectionPrepareException {
+    public int[][] parseConnections(String[] connectionsRows) throws ConnectionParseException {
         return null;
     }
 }
