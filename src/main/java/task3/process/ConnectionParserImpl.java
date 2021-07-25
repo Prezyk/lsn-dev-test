@@ -20,18 +20,27 @@ public class ConnectionParserImpl implements ConnectionParser {
 
     private int[] parseConnectionRow(String connectionRow, int rowIndex) throws ConnectionParseException {
         String[] connectionRowElements = connectionRow.split(VERTICES_SEPARATOR);
+        validateConnectionRowElementsNumber(connectionRowElements, rowIndex);
+        int[] connectionVertices = new int[2];
+        for(int elementIndex=0; elementIndex<connectionRowElements.length; elementIndex++) {
+            connectionVertices[elementIndex] = parseVertexFromRow(connectionRowElements[elementIndex], rowIndex);
+        }
+        return connectionVertices;
+    }
+
+    private void validateConnectionRowElementsNumber(String[] connectionRowElements, int rowIndex) throws ConnectionParseException {
         if(connectionRowElements.length!=2) {
             throw new ConnectionParseException(String.format(INVALID_ELEMENT_COUNT_MESSAGE, rowIndex));
         }
-        int[] connectionVertices = new int[2];
-        for(int elementIndex=0; elementIndex<connectionRowElements.length; elementIndex++) {
-            try {
-                connectionVertices[elementIndex] = Integer.parseInt(connectionRowElements[elementIndex]);
-            } catch (NumberFormatException numberFormatException) {
-                throw new ConnectionParseException(String.format(INVALID_CHAR_AT_CONNECTION_ROW, rowIndex), numberFormatException);
-            }
+    }
+
+    private int parseVertexFromRow(String vertexToParse, int rowIndex) throws ConnectionParseException {
+        try {
+            int parsedVertex = Integer.parseInt(vertexToParse);
+            return parsedVertex;
+        } catch (NumberFormatException numberFormatException) {
+            throw new ConnectionParseException(String.format(INVALID_CHAR_AT_CONNECTION_ROW, rowIndex), numberFormatException);
         }
-        return connectionVertices;
     }
 
 }
