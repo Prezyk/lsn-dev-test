@@ -48,7 +48,7 @@ public class Task2 {
     }
 
     private static void printPair(Integer[] integerPair) {
-        System.out.println(integerPair[0] + " " + integerPair[1] + "\n");
+        System.out.println(integerPair[0] + " " + integerPair[1]);
     }
 
     private static void printError() {
