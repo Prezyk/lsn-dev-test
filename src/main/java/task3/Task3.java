@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Task3 {
 
-    private static final String WELCOME_MESSAGE = "Please type number of edges \"n\" and then edges in the lines below, e.g.:\n3\n1 2\n2 3\n3 4";
+    private static final String WELCOME_MESSAGE = "Please type number of edges \"n\" and then edges in the lines below, e.g.:\n3\n1 2\n2 3\n3 4\n";
     private static final String INVALID_INPUT_MESSAGE = "Error: Wrong format of the data. Check you input.";
 
     public static void main(String[] args) {
