@@ -11,12 +11,12 @@ class SeparatedGraphCounterImplTest {
     @Test
     void testCountSeparatedGraphs() {
         int expectedNumberOfSeparatedGraphs = 2;
-        int[][] connections = new int[][]{
+        int[][] edges = new int[][]{
                 new int[]{2, 3},
                 new int[]{1, 2},
                 new int[]{5, 6}
         };
-        int actualNumberOfSeparatedGraphs = separatedGraphCounter.countSeparatedGraphs(connections);
+        int actualNumberOfSeparatedGraphs = separatedGraphCounter.countSeparatedGraphs(edges);
         assertEquals(expectedNumberOfSeparatedGraphs, actualNumberOfSeparatedGraphs);
     }
 

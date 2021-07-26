@@ -1,24 +1,24 @@
 package task3;
 
-import task3.process.exception.ConnectionParseException;
+import task3.process.exception.EdgeParseException;
 
 import java.util.Scanner;
 
 public class Task3 {
 
-    private static final String WELCOME_MESSAGE = "Please type number of connections \"n\" and then connections in the lines below, e.g.:\n3\n1 2\n2 3\n3 4";
+    private static final String WELCOME_MESSAGE = "Please type number of edges \"n\" and then edges in the lines below, e.g.:\n3\n1 2\n2 3\n3 4";
     private static final String INVALID_INPUT_MESSAGE = "Error: Wrong format of the data. Check you input.";
 
     public static void main(String[] args) {
         printWelcomeMessage();
         Scanner scanner = new Scanner(System.in);
         int numberOfLines = scanner.nextInt();
-        String[] connectionsRows = collectInput(numberOfLines);
+        String[] edges = collectInput(numberOfLines);
         try {
-            int[][] connections = parseConnections(connectionsRows);
-            int numberOfSeparatedGraphs = countSeparatedGraphs(connections);
+            int[][] parsedEdges = parseEdges(edges);
+            int numberOfSeparatedGraphs = countSeparatedGraphs(parsedEdges);
             System.out.println(numberOfSeparatedGraphs);
-        } catch (ConnectionParseException exception) {
+        } catch (EdgeParseException exception) {
             printError();
         }
     }
@@ -31,7 +31,7 @@ public class Task3 {
         return null;
     }
 
-    private static int[][] parseConnections(String[] connectionsRows) throws ConnectionParseException {
+    private static int[][] parseEdges(String[] edges) throws EdgeParseException {
         return null;
     }
 
