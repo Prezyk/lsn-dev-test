@@ -1,5 +1,9 @@
 package task3;
 
+import task3.process.EdgeParser;
+import task3.process.EdgeParserImpl;
+import task3.process.SeparatedGraphCounter;
+import task3.process.SeparatedGraphCounterImpl;
 import task3.process.exception.EdgeParseException;
 
 import java.util.Scanner;
@@ -13,7 +17,7 @@ public class Task3 {
         printWelcomeMessage();
         Scanner scanner = new Scanner(System.in);
         int numberOfLines = scanner.nextInt();
-        String[] edges = collectInput(numberOfLines);
+        String[] edges = collectInput(scanner, numberOfLines);
         try {
             int[][] parsedEdges = parseEdges(edges);
             int numberOfSeparatedGraphs = countSeparatedGraphs(parsedEdges);
@@ -27,16 +31,24 @@ public class Task3 {
         System.out.println(WELCOME_MESSAGE);
     }
 
-    private static String[] collectInput(int numberOfLines) {
-        return null;
+    private static String[] collectInput(Scanner scanner, int numberOfLines) {
+        String[] edges = new String[numberOfLines];
+        scanner.nextLine();
+        for(int lineIndex=0; lineIndex<numberOfLines; lineIndex++) {
+            edges[lineIndex] = scanner.nextLine();
+        }
+        return edges;
     }
 
     private static int[][] parseEdges(String[] edges) throws EdgeParseException {
-        return null;
+        EdgeParser edgeParser = new EdgeParserImpl();
+        return edgeParser.parseEdges(edges);
     }
 
-    private static int countSeparatedGraphs(int[][] connections) {
-        return -1;
+    private static int countSeparatedGraphs(int[][] edges) {
+        SeparatedGraphCounter separatedGraphCounter = new SeparatedGraphCounterImpl();
+        int numberOfSeparatedGraphs = separatedGraphCounter.countSeparatedGraphs(edges);
+        return numberOfSeparatedGraphs;
     }
 
     private static void printError() {
