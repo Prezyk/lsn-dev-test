@@ -1,10 +1,8 @@
 package task2;
 
 import task1.process.IntegerListPreparer;
-import task1.process.IntegerListPreparerImpl;
 import task1.process.exception.IntegerListPrepareException;
 import task2.process.PairFinder;
-import task2.process.PairFinderImp;
 
 import java.util.List;
 import java.util.Scanner;
@@ -33,13 +31,13 @@ public class Task2 {
     }
 
     private static List<Integer[]> processInput(String input) throws IntegerListPrepareException {
-        PairFinder pairFinder = new PairFinderImp(SUM_UP_TO);
+        PairFinder pairFinder = new PairFinder(SUM_UP_TO);
         List<Integer> integers = prepareInput(input);
         return pairFinder.findPairs(integers);
     }
 
     private static List<Integer> prepareInput(String input) throws IntegerListPrepareException {
-        IntegerListPreparer preparer = new IntegerListPreparerImpl();
+        IntegerListPreparer preparer = new IntegerListPreparer();
         return preparer.prepareIntegersList(input, INPUT_SEPARATOR);
     }
 

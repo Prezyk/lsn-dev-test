@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IntegerListPreparerImplTest {
 
-    private IntegerListPreparer integerListPreparer = new IntegerListPreparerImpl();;
+    private IntegerListPreparer integerListPreparer = new IntegerListPreparer();;
 
     @Test
     void testPrepareIntegerListNonIntegersInInput() {

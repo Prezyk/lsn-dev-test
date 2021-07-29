@@ -2,9 +2,7 @@ package task1;
 
 import task1.data.DistinctSortedElements;
 import task1.process.IntegerListPreparer;
-import task1.process.IntegerListPreparerImpl;
 import task1.process.IntegerListProcessor;
-import task1.process.IntegerListProcessorImpl;
 import task1.process.exception.IntegerListPrepareException;
 
 import java.util.List;
@@ -34,13 +32,13 @@ public class Task1 {
     }
 
     private static DistinctSortedElements processInput(String input) throws IntegerListPrepareException {
-        IntegerListProcessor integerProcessor = new IntegerListProcessorImpl();
+        IntegerListProcessor integerProcessor = new IntegerListProcessor();
         List<Integer> integers = prepareInput(input);
         return integerProcessor.processIntegerList(integers);
     }
 
     private static List<Integer> prepareInput(String input) throws IntegerListPrepareException {
-        IntegerListPreparer preparer = new IntegerListPreparerImpl();
+        IntegerListPreparer preparer = new IntegerListPreparer();
         return preparer.prepareIntegersList(input, INPUT_SEPARATOR);
     }
 

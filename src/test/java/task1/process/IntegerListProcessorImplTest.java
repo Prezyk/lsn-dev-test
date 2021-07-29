@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IntegerListProcessorImplTest {
 
-    private IntegerListProcessor integerListProcessor = new IntegerListProcessorImpl();
+    private IntegerListProcessor integerListProcessor = new IntegerListProcessor();
 
     @Test
     void testProcessIntegerListOneElement() {
