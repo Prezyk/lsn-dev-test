@@ -8,7 +8,7 @@ public class SeparatedGraphCounter {
         Map<Integer, Set<Integer>> adjacencyList = createAdjacencyList(edgesVertices);
         int graphCount = 0;
         while(!adjacencyList.keySet().isEmpty()) {
-            Integer nextKey = (Integer)adjacencyList.keySet().toArray()[0];
+            Integer nextKey = adjacencyList.keySet().iterator().next();
             removeGraphContinuation(nextKey, adjacencyList, new HashSet<>());
             graphCount++;
         }
@@ -24,20 +24,20 @@ public class SeparatedGraphCounter {
         return adjacencyList;
     }
 
-    private void addAdjacencyListEntry(int key, int value, Map<Integer, Set<Integer>> adjacencyList) {
-        if(adjacencyList.get(key)==null) {
-            adjacencyList.put(key, new HashSet<Integer>(){{add(value);}});
+    private void addAdjacencyListEntry(int vertexKey, int vertexAdjacency, Map<Integer, Set<Integer>> adjacencyList) {
+        if(adjacencyList.get(vertexKey)==null) {
+            adjacencyList.put(vertexKey, new HashSet<Integer>(){{add(vertexAdjacency);}});
         } else {
-            adjacencyList.get(key).add(value);
+            adjacencyList.get(vertexKey).add(vertexAdjacency);
         }
     }
 
-    private void removeGraphContinuation(int indexKey, Map<Integer, Set<Integer>> adjacencyList, Set<Integer> seen) {
-        seen.add(indexKey);
+    private void removeGraphContinuation(int indexKey, Map<Integer, Set<Integer>> adjacencyList, Set<Integer> visitedVertices) {
+        visitedVertices.add(indexKey);
         Set<Integer> currentAdjacencyNode = adjacencyList.remove(indexKey);
         for(Integer nextKey: currentAdjacencyNode) {
-            if(!seen.contains(nextKey)) {
-                removeGraphContinuation(nextKey, adjacencyList, seen);
+            if(!visitedVertices.contains(nextKey)) {
+                removeGraphContinuation(nextKey, adjacencyList, visitedVertices);
             }
         }
     }
