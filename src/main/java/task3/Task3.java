@@ -1,9 +1,7 @@
 package task3;
 
 import task3.process.EdgeParser;
-import task3.process.EdgeParserImpl;
 import task3.process.SeparatedGraphCounter;
-import task3.process.SeparatedGraphCounterImpl;
 import task3.process.exception.EdgeParseException;
 
 import java.util.Scanner;
@@ -41,12 +39,12 @@ public class Task3 {
     }
 
     private static int[][] parseEdges(String[] edges) throws EdgeParseException {
-        EdgeParser edgeParser = new EdgeParserImpl();
+        EdgeParser edgeParser = new EdgeParser();
         return edgeParser.parseEdges(edges);
     }
 
     private static int countSeparatedGraphs(int[][] edges) {
-        SeparatedGraphCounter separatedGraphCounter = new SeparatedGraphCounterImpl();
+        SeparatedGraphCounter separatedGraphCounter = new SeparatedGraphCounter();
         int numberOfSeparatedGraphs = separatedGraphCounter.countSeparatedGraphs(edges);
         return numberOfSeparatedGraphs;
     }

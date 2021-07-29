@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EdgeParserImplTest {
 
-    private EdgeParser edgeParser = new EdgeParserImpl();
+    private EdgeParser edgeParser = new EdgeParser();
 
 
     @Test
