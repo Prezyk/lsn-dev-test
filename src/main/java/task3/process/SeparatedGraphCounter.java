@@ -15,16 +15,6 @@ public class SeparatedGraphCounter {
         return graphCount;
     }
 
-    private void removeGraphContinuation(int indexKey, Map<Integer, Set<Integer>> adjacencyList, Set<Integer> seen) {
-        seen.add(indexKey);
-        Set<Integer> currentAdjacencyNode = adjacencyList.remove(indexKey);
-        for(Integer nextKey: currentAdjacencyNode) {
-            if(!seen.contains(nextKey)) {
-                removeGraphContinuation(nextKey, adjacencyList, seen);
-            }
-        }
-    }
-
     private Map<Integer, Set<Integer>> createAdjacencyList(int[][] edges) {
         Map<Integer, Set<Integer>> adjacencyList = new HashMap<>();
         for(int[] edge: edges) {
@@ -39,6 +29,16 @@ public class SeparatedGraphCounter {
             adjacencyList.put(key, new HashSet<Integer>(){{add(value);}});
         } else {
             adjacencyList.get(key).add(value);
+        }
+    }
+
+    private void removeGraphContinuation(int indexKey, Map<Integer, Set<Integer>> adjacencyList, Set<Integer> seen) {
+        seen.add(indexKey);
+        Set<Integer> currentAdjacencyNode = adjacencyList.remove(indexKey);
+        for(Integer nextKey: currentAdjacencyNode) {
+            if(!seen.contains(nextKey)) {
+                removeGraphContinuation(nextKey, adjacencyList, seen);
+            }
         }
     }
 }
